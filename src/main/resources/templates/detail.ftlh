@@ -7,17 +7,34 @@
 <body>
 <div class="detail">
     <div class="vizitka">
-        <div class="jmeno">Dita (Přikrylová) Formánková</div>
-        <div class="firma">Czechitas z. s.</div>
+
+        [#if vizitka.jmeno??]
+            <div class="jmeno">${vizitka.jmeno}</div>
+        [/#if]
+
+        [#if vizitka.firma??]
+            <div class="firma">${vizitka.firma}</div>
+        [/#if]
+
         <div class="udaje">
             <div class="adresa">
-                <div>Václavské náměstí 837/11</div>
-                <div><span>11000</span> Praha 1</div>
+                [#if vizitka.ulice??]
+                    <div>${vizitka.ulice}</div>
+                [/#if]
+                [#if vizitka.obecPsc??]
+                    <div><span>${vizitka.obecPsc}</div>
+                [/#if]
             </div>
             <div class="kontakty">
-                <div><i class="bi bi-at"></i> dita@example.com</div>
-                <div><i class="bi bi-phone"></i> +420 800123456</div>
-                <div><i class="bi bi-globe"></i> www.czechitas.cz</div>
+                [#if vizitka.email??]
+                    <div><i class="bi bi-at"></i> ${vizitka.email}</div>
+                [/#if]
+                [#if vizitka.telefon??]
+                    <div><i class="bi bi-phone"></i> ${vizitka.telefon}</div>
+                [/#if]
+                [#if vizitka.web??]
+                    <div><i class="las la-globe"></i> <span><a href="http://${vizitka.web}" target="_blank">${vizitka.web}</a></span></div>
+                [/#if]
             </div>
         </div>
     </div>
@@ -29,6 +46,15 @@
     <nav>
         <a href="/">◂ zpět na seznam</a>
     </nav>
+
+
+    <form action="/delete" method="post" style="display:inline;">
+        <input type="hidden" name="id" value="${index}">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+
 </div>
 </body>
 </html>
+
+

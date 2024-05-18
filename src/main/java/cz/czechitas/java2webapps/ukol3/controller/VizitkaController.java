@@ -1,9 +1,12 @@
 package cz.czechitas.java2webapps.ukol3.controller;
 
+import cz.czechitas.java2webapps.ukol3.entity.Vizitka;
 import cz.czechitas.java2webapps.ukol3.service.VizitkaService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -28,6 +31,32 @@ public class VizitkaController {
     public ModelAndView detail(@PathVariable int id) {
         ModelAndView result = new ModelAndView("detail");
         result.addObject("vizitka", service.getById(id));
+        result.addObject("index", id);
         return result;
     }
+    @GetMapping("/nova")
+    public ModelAndView nova() {
+        return new ModelAndView("nova");
+    }
+    @PostMapping("/nova")
+    public String createVizitka(
+            @RequestParam String jmeno,
+            @RequestParam(required = false) String firma,
+            @RequestParam(required = false) String ulice,
+            @RequestParam String obecPsc,
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String telefon,
+            @RequestParam(required = false) String web
+    ) {
+        Vizitka newVizitka = new Vizitka(jmeno, firma, ulice, obecPsc, email, telefon, web);
+        service.append(newVizitka);
+        return "redirect:/";
+    }
+
+    @PostMapping("/delete")
+    public String delete(@RequestParam int id) {
+        service.deleteById(id);
+        return "redirect:/";
+    }
+
 }
