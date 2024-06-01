@@ -10,7 +10,6 @@
     <div class="vizitka">
     <form action="/nova" method="post">
 
-
         <div class="adresa">
 
         <label for="jmeno">Jméno:</label>
@@ -20,7 +19,6 @@
         <label for="firma">Firma:</label>
         <input type="text" id="firma" name="firma">
         </div>
-
 
         <div class="udaje">
             <div class="adresa">

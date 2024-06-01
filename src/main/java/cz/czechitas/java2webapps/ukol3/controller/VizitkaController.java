@@ -39,18 +39,7 @@ public class VizitkaController {
         return new ModelAndView("nova");
     }
     @PostMapping("/nova")
-    public String createVizitka(
-            @RequestParam String jmeno,
-            @RequestParam(required = false) String firma,
-            @RequestParam(required = false) String ulice,
-            @RequestParam String obecPsc,
-            @RequestParam(required = false) String email,
-            @RequestParam(required = false) String telefon,
-            @RequestParam(required = false) String web
-    ) {
-        Vizitka newVizitka = new Vizitka(jmeno, firma, ulice, obecPsc, email, telefon, web);
-        service.append(newVizitka);
-        return "redirect:/";
+    public String createVizitka(Vizitka vizitka) { service.append(vizitka); return "redirect:/";
     }
 
     @PostMapping("/delete")

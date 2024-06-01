@@ -26,14 +26,14 @@
                 [/#if]
             </div>
             <div class="kontakty">
-                [#if vizitka.email??]
+                [#if vizitka.email?has_content]
                     <div><i class="bi bi-at"></i> ${vizitka.email}</div>
                 [/#if]
-                [#if vizitka.telefon??]
+                [#if vizitka.telefon?has_content]
                     <div><i class="bi bi-phone"></i> ${vizitka.telefon}</div>
                 [/#if]
-                [#if vizitka.web??]
-                    <div><i class="las la-globe"></i> <span><a href="http://${vizitka.web}" target="_blank">${vizitka.web}</a></span></div>
+                [#if vizitka.web?has_content]
+                    <div><i class="bi bi-globe"></i> <a href="http://${vizitka.web}" target="_blank">${vizitka.web}</a></div>
                 [/#if]
             </div>
         </div>

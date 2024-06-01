@@ -27,13 +27,13 @@
                         [/#if]
                     </div>
                     <div class="kontakty">
-                        [#if vizitka.email??]
+                        [#if vizitka.email?has_content]
                         <div><i class="bi bi-at"></i> ${vizitka.email}</div>
                         [/#if]
-                        [#if vizitka.telefon??]
+                        [#if vizitka.telefon?has_content]
                         <div><i class="bi bi-phone"></i> ${vizitka.telefon}</div>
                         [/#if]
-                        [#if vizitka.web??]
+                        [#if vizitka.web?has_content]
                         <div><i class="bi bi-globe"></i> ${vizitka.web}</div>
                         [/#if]
                     </div>
